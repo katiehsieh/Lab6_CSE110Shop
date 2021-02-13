@@ -94,16 +94,16 @@ class ProductItem extends HTMLElement {
     li.appendChild(title);
     li.appendChild(price);
     li.appendChild(button);
-    
+
     shadowRoot.appendChild(li);
   }
 
   setItem(item) {
     const shadow = this.shadowRoot;
-    shadow.querySelector('image').src = item.image;
-    shadow.querySelector('image').alt = item.title;
-    shadow.querySelector('title').textContent = item.title;
-    shadow.querySelector('price').textContent = '$' + item.price;
+    shadow.getElementsByClass('image').src = item.image;
+    shadow.getElementsByClass('image').alt = item.title;
+    shadow.getElementsByClass('title').textContent = item.title;
+    shadow.getElementsByClass('price').textContent = '$' + item.price;
   }
 
 }
