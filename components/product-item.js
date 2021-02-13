@@ -52,7 +52,8 @@ class ProductItem extends HTMLElement {
         .product > img {
           align-self: center;
           justify-self: center;
-          width: 100%;
+          max-width: 100%;
+          max-height: 100%;
         }
         
         .title {
@@ -77,14 +78,15 @@ class ProductItem extends HTMLElement {
     li.setAttribute('class', 'product');
 
     const img = document.createElement('img');
-    img.width = 200;
-    img.height = '100%';
+    img.setAttribute('id', 'img');
     
     const title = document.createElement('p');
     title.setAttribute('class', 'title');
+    title.setAttribute('id', 'title');
     
     const price = document.createElement('p');
     price.setAttribute('class', 'price');
+    price.setAttribute('id', 'price');
     
     const button = document.createElement('button');
     button.textContent = 'Add to Cart';
@@ -100,10 +102,10 @@ class ProductItem extends HTMLElement {
 
   setItem(item) {
     const shadow = this.shadowRoot;
-    shadow.getElementsByClass('image').src = item.image;
-    shadow.getElementsByClass('image').alt = item.title;
-    shadow.getElementsByClass('title').textContent = item.title;
-    shadow.getElementsByClass('price').textContent = '$' + item.price;
+    shadow.getElementById('img').src = item.image;
+    shadow.getElementById('img').alt = item.title;
+    shadow.getElementById('title').innerText = item.title;
+    shadow.getElementById('price').innerText = '$' + item.price;
   }
 
 }
