@@ -80,6 +80,14 @@ class ProductItem extends HTMLElement {
       </li>
     `;
   }
+
+  setItem(item) {
+    document.getElementById('image').src = item.image;
+    document.getElementById('image').alt = item.title;
+    document.getElementById('title').textContent = item.title;
+    document.getElementById('price').textContent = "$" + item.price;
+  }
+  
 }
 
 customElements.define('product-item', ProductItem);

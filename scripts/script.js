@@ -12,10 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const items = JSON.parse(localStorage.getItem('data'));
   for (let i = 0; i < items.length; i++) {
     const itemElem = document.createElement('product-item');
-    document.getElementById('image').src = items[i].image;
-    document.getElementById('image').alt = items[i].title;
-    document.getElementById('title').textContent = items[i].title;
-    document.getElementById('price').textContent = "$" + items[i].price;
+    itemElem.setItem(items[i]);
     document.getElementById('product-list').appendChild(itemElem);
   }
 });
