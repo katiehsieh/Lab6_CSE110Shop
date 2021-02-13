@@ -1,4 +1,5 @@
 // Script.js
+let cartCount = 0;
 
 window.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('data') === null) {
