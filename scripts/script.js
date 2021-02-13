@@ -9,6 +9,9 @@ window.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  const itemElem = document.createElement('product-item');
-  document.getElementById('product-list').appendChild(itemElem);
+  const items = JSON.parse(localStorage.getItem('data'));
+  for (let i = 0; i < items.length; i++) {
+    const itemElem = document.createElement('product-item');
+    document.getElementById('product-list').appendChild(itemElem);
+  }
 });
