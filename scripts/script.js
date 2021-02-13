@@ -8,4 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('data', JSON.stringify(data))
       });
   }
+
+  const itemElem = document.createElement('product-item');
+  document.getElementById('product-list').appendChild(itemElem);
 });
