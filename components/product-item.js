@@ -1,7 +1,7 @@
 // product-item.js
 
 class ProductItem extends HTMLElement {
-  constructor() {
+  constructor(item) {
     super();
     
     const shadowRoot = this.attachShadow({mode: 'open'});
@@ -71,23 +71,35 @@ class ProductItem extends HTMLElement {
           text-overflow: unset;
         }
       </style>
-
-      <li class="product">
-        <img id="image" src="" alt="image" width=200>
-        <p id="title" class="title">title</p>
-        <p id="price" class="price">price</p>
-        <button onclick="alert('Added to Cart!')">Add to Cart</button>
-      </li>
     `;
+
+    const li = document.createElement('li');
+    li.setAttribute('class', 'product');
+
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = item.title;
+    img.width = 200;
+    
+    const title = document.createElement('p');
+    title.setAttribute('class', 'title');
+    title.textContent = item.title;
+
+    const price = document.createElement('p');
+    price.setAttribute('class', 'price');
+    price.textContent = '$' + item.price;
+    
+    const button = document.createElement('button');
+    button.textContent = 'Add to Cart';
+    button.addEventListener(onclick, () => {alert('Added to Cart!')})
+
+    li.appendChild(img);
+    li.appendChild(title);
+    li.appendChild(price);
+    li.appendChild(button);
+    shadowRoot.appendChild(li);
   }
 
-  setItem(item) {
-    shadowRoot.getElementById('image').src = item.image;
-    shadowRoot.getElementById('image').alt = item.title;
-    shadowRoot.getElementById('title').textContent = item.title;
-    shadowRoot.getElementById('price').textContent = "$" + item.price;
-  }
-  
 }
 
 customElements.define('product-item', ProductItem);
