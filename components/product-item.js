@@ -82,10 +82,10 @@ class ProductItem extends HTMLElement {
   }
 
   setItem(item) {
-    document.getElementById('image').src = item.image;
-    document.getElementById('image').alt = item.title;
-    document.getElementById('title').textContent = item.title;
-    document.getElementById('price').textContent = "$" + item.price;
+    shadowRoot.getElementById('image').src = item.image;
+    shadowRoot.getElementById('image').alt = item.title;
+    shadowRoot.getElementById('title').textContent = item.title;
+    shadowRoot.getElementById('price').textContent = "$" + item.price;
   }
   
 }
