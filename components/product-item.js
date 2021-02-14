@@ -114,11 +114,13 @@ class ProductItem extends HTMLElement {
     if (shadow.getElementById('button').innerText == 'Add to Cart') {
       shadow.getElementById('button').innerText = 'Remove from Cart';
       cartCount += 1;
+      document.getElementById('cart-count').innerText = cartCount;
       alert('Added to Cart!')
     }
     else {
       shadow.getElementById('button').innerText = 'Add to Cart';
       cartCount -= 1;
+      document.getElementById('cart-count').innerText = cartCount;
       alert('Removed from Cart!')
     }
   }
