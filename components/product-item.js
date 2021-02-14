@@ -91,7 +91,7 @@ class ProductItem extends HTMLElement {
     const button = document.createElement('button');
     button.innerText = 'Add to Cart';
     button.setAttribute('id', 'button');
-    button.onclick = () => this.onButtonClicked();
+    button.onclick = () => this.onButtonClicked(true);
 
     li.appendChild(img);
     li.appendChild(title);
@@ -111,7 +111,7 @@ class ProductItem extends HTMLElement {
     this.setAttribute('itemId', item.id);
   }
 
-  onButtonClicked() {
+  onButtonClicked(showAlert) {
     const shadow = this.shadowRoot;
     const itemId = this.getAttribute('itemId');
 
@@ -125,10 +125,10 @@ class ProductItem extends HTMLElement {
       shadow.getElementById('button').innerText = 'Remove from Cart';
       cartCount += 1;
       document.getElementById('cart-count').innerText = cartCount;
-      alert('Added to Cart!');
       
-      if (cart[itemId] == null) {
-        cart[itemId] = '';
+      if (showAlert) {
+        alert('Added to Cart!');
+        cart[itemId] = itemId;
         localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
@@ -137,9 +137,9 @@ class ProductItem extends HTMLElement {
       shadow.getElementById('button').innerText = 'Add to Cart';
       cartCount -= 1;
       document.getElementById('cart-count').innerText = cartCount;
-      alert('Removed from Cart!');
-
-      if (cart[itemId] != null) {
+      
+      if (showAlert) {
+        alert('Removed from Cart!');
         delete cart[itemId];
         localStorage.setItem('cart', JSON.stringify(cart));
       }

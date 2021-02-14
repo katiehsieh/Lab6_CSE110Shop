@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
     itemElem.setItem(items[i]);
 
     if (cart[items[i].id] != null) {
-      itemElem.onButtonClicked();   // add item to cart
+      itemElem.onButtonClicked(false);   // add item to cart
     }
 
     document.getElementById('product-list').appendChild(itemElem);
