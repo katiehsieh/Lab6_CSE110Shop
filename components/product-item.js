@@ -91,7 +91,7 @@ class ProductItem extends HTMLElement {
     const button = document.createElement('button');
     button.innerText = 'Add to Cart';
     button.setAttribute('id', 'button');
-    button.onclick = function(){onButtonClicked()};
+    button.onclick = onButtonClicked();
 
     li.appendChild(img);
     li.appendChild(title);
