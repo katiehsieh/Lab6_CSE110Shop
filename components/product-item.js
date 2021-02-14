@@ -107,23 +107,45 @@ class ProductItem extends HTMLElement {
     shadow.getElementById('img').alt = item.title;
     shadow.getElementById('title').innerText = item.title;
     shadow.getElementById('price').innerText = '$' + item.price;
+    
+    this.setAttribute('item', item);
   }
 
   onButtonClicked() {
     const shadow = this.shadowRoot;
+    const item = this.getAttribute('item');
+
+    if (localStorage.getItem('cart') === null) {
+      localStorage.setItem('cart', '[]');
+    }
+    const cart = JSON.parse(localStorage.getItem('cart'));
+
     if (shadow.getElementById('button').innerText == 'Add to Cart') {
+      // add to cart
       shadow.getElementById('button').innerText = 'Remove from Cart';
       cartCount += 1;
       document.getElementById('cart-count').innerText = cartCount;
       alert('Added to Cart!');
+      
+      if (cart[item.id] == null) {
+        cart[item.id] = '';
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
     }
     else {
+      // remove from cart
       shadow.getElementById('button').innerText = 'Add to Cart';
       cartCount -= 1;
       document.getElementById('cart-count').innerText = cartCount;
       alert('Removed from Cart!');
+
+      if (cart[item.id] != null) {
+        delete cart[item.id];
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
     }
   }
+
 }
 
 customElements.define('product-item', ProductItem);
