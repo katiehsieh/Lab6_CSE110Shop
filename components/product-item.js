@@ -108,12 +108,12 @@ class ProductItem extends HTMLElement {
     shadow.getElementById('title').innerText = item.title;
     shadow.getElementById('price').innerText = '$' + item.price;
     
-    this.setAttribute('item', item);
+    this.setAttribute('itemId', item.id);
   }
 
   onButtonClicked() {
     const shadow = this.shadowRoot;
-    const item = this.getAttribute('item');
+    const itemId = this.getAttribute('itemId');
 
     if (localStorage.getItem('cart') === null) {
       localStorage.setItem('cart', '[]');
@@ -127,8 +127,8 @@ class ProductItem extends HTMLElement {
       document.getElementById('cart-count').innerText = cartCount;
       alert('Added to Cart!');
       
-      if (cart[item.id] == null) {
-        cart[item.id] = '';
+      if (cart[itemId] == null) {
+        cart[itemId] = '';
         localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
@@ -139,8 +139,8 @@ class ProductItem extends HTMLElement {
       document.getElementById('cart-count').innerText = cartCount;
       alert('Removed from Cart!');
 
-      if (cart[item.id] != null) {
-        delete cart[item.id];
+      if (cart[itemId] != null) {
+        delete cart[itemId];
         localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
