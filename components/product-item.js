@@ -91,7 +91,7 @@ class ProductItem extends HTMLElement {
     const button = document.createElement('button');
     button.innerText = 'Add to Cart';
     button.setAttribute('id', 'button');
-    button.addEventListener("click", onButtonClicked())
+    button.onclick = function(onButtonClicked());
 
     li.appendChild(img);
     li.appendChild(title);
@@ -114,10 +114,12 @@ class ProductItem extends HTMLElement {
     if (shadow.getElementById('button').innerText == 'Add to Cart') {
       shadow.getElementById('button').innerText = 'Remove from Cart';
       cartCount += 1;
+      alert('Added to Cart!')
     }
     else {
       shadow.getElementById('button').innerText = 'Add to Cart';
       cartCount -= 1;
+      alert('Removed from Cart!')
     }
   }
 }
